@@ -1,11 +1,11 @@
 This is the code booj fior tidydata.txt
 
-#ID
+# ID
 
 -`subject`: The name of the subject
 -`activity`: The activity conducted when taken the measurement 
 
-#Variables
+# Variables
 
 * `tBodyAccMeanX`
 * `tBodyAccMeanY`
