@@ -8,15 +8,12 @@ activity[,2] <- as.character(activity[,2])
 features <- read.table("features.txt")
 features[,2] <- as.character(features[,2])
 
-
-# Extract only the data on mean and standard deviation
 remains <- grep(".*mean.*|.*std.*", features[,2])
 cleanname <- features[remains,2]
 cleanname = gsub('-mean', 'Mean', cleanname)
 cleanname = gsub('-std', 'Std', cleanname)
 cleanname <- gsub('[-()]', '', cleanname)
 
-# Load the datasets
 train <- read.table("train/X_train.txt")
 train <- train[remains]
 trainactivities <- read.table("train/Y_train.txt")
@@ -29,7 +26,6 @@ testactivities <- read.table("test/Y_test.txt")
 testsubjects <- read.table("test/subject_test.txt")
 test <- cbind(testsubjects, testactivities, test)
 
-# merge datasets and add labels
 combined <- rbind(train, test)
 colnames(combined) <- c("subject", "activity", cleanname)
 combined$activity <- factor(combined$activity, levels = activity[,1], labels = activity[,2])
